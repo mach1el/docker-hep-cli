@@ -8,21 +8,15 @@ ENV TZ=Asia/Ho_Chi_Minh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -qq && \
-    apt-get install -y \
-    git \
+    apt-get install -y --no-install-recommends \
     curl \
-    wget \
     ca-certificates \
     gnupg2 \
     dirmngr \
-    python3-pip \
-    libpq-dev \
     runit   \
     procps  \
     parallel \
     sudo \
-    pkg-config \
-    file \
     && rm -rf /var/lib/apt/lists
 
 RUN curl -s https://packagecloud.io/install/repositories/qxip/sipcapture/script.deb.sh | bash
